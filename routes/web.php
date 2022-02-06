@@ -12,8 +12,21 @@ Route::view('/index', 'home.index');
 
 Route::view('/contact', 'home.contact');
 
-Route::get('/posts/{id?}', function ($id = 20) {
-   return 'Blo posts ' . $id;
+Route::get('/posts/{id}', function ($id) {
+    $posts = [
+        1 => [
+            'title'   => 'Intro to Laravel',
+            'content' => 'This is a short intro to Laravel',
+        ],
+        2 => [
+            'title'   => 'Intro to PHP',
+            'content' => 'This is a short intro to PHP',
+        ]
+    ];
+
+    abort_if(!isset($posts[$id]), 404);
+
+    return view('posts.show', ['post' => $posts[$id]]);
 })
 //    ->where(['id' => '[0-9]+'])
     ->name('posts.show');
