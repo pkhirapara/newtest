@@ -23,9 +23,8 @@
         <label for="address">Address</label>
         <input type="text" name="address">
     </div>
-    @csrf
 
-    <button>Add New Customer</button>
+    <button type="submit">Add New Customer</button>
 
 </form>
 

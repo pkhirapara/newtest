@@ -8,7 +8,11 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [UserController::class, 'index']);
 
-
+Route::get('/posts/{id?}', function ($id = 20) {
+   return 'Blo posts ' . $id;
+})
+//    ->where(['id' => '[0-9]+'])
+    ->name('posts.show');
 
 Auth::routes();
 

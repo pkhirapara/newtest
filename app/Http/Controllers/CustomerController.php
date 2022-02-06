@@ -1,17 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Customer;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index() {
-
-        $customers = Customer::all();
+        $customers = new Customer;
+        $customers = $customers->all();
 
         return view('customer.index', compact('customers'));
+
+        //$customers = Customer::all();
+
+        //return view('customer.index', compact('customers'));
     }
 
     public function create() {
