@@ -39,6 +39,12 @@ Route::get('/posts/{id}', function ($id) use ($posts) {
 //    ->where(['id' => '[0-9]+'])
     ->name('posts.show');
 
+Route::get('/fun/responses', function () use($posts) {
+   return response($posts, 201)
+       ->header('Content-Type', 'application/json')
+       ->cookie('MY_COOKIE', 'Pk Hirpara', 3600);
+});
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
