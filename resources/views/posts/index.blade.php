@@ -4,10 +4,15 @@
 
 @section('content')
 
+    @if(count($posts))
 
     @foreach($posts as $key => $post)
         <div>{{ $key }}. {{ $post['title'] }}</div>
     @endforeach
+
+    @else
+    No posts found!
+    @endif
 
 
 
