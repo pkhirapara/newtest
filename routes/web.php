@@ -47,34 +47,40 @@ Route::get('/posts/{id}', function ($id) use ($posts) {
 //    ->where(['id' => '[0-9]+'])
     ->name('posts.show');
 
-Route::get('/fun/responses', function () use($posts) {
-   return response($posts, 201)
-       ->header('Content-Type', 'application/json')
-       ->cookie('MY_COOKIE', 'Pk Hirpara', 3600);
+Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
+
+    Route::get('responses', function () use($posts) {
+        return response($posts, 201)
+            ->header('Content-Type', 'application/json')
+            ->cookie('MY_COOKIE', 'Pk Hirpara', 3600);
+    })->name('responses');
+
+    Route::get('redirect', function () {
+        return redirect('/contact');
+    })->name('redirect');
+
+    Route::get('back', function () {
+        return back();
+    })->name('back');
+
+    Route::get('named-route', function () {
+        return redirect()->route('posts.index');
+    })->name('named-route');
+
+    Route::get('away', function () {
+        return redirect()->away('https://google.com');
+    })->name('away');
+
+    Route::get('/fun/json', function () use ($posts) {
+        return response()->json($posts);
+    });
+
+    Route::get('/fun/download', function () {
+        return response()->download(public_path('landscape.pdf'), 'pk.pdf');
+    });
+
 });
 
-Route::get('/fun/redirect', function () {
-    return redirect('/contact');
-});
 
-Route::get('/fun/back', function () {
-    return back();
-});
-
-Route::get('/fun/named-route', function () {
-    return redirect()->route('posts.index');
-});
-
-Route::get('/fun/away', function () {
-    return redirect()->away('https://google.com');
-});
-
-Route::get('/fun/json', function () use ($posts) {
-    return response()->json($posts);
-});
-
-Route::get('/fun/download', function () {
-    return response()->download(public_path('landscape.pdf'), 'pk.pdf');
-});
 
 
