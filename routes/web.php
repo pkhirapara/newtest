@@ -28,7 +28,7 @@ $posts = [
 
 Route::get('/posts', function () use ($posts) {
     return view('posts.index', ['posts' => $posts]);
-});
+})->name('posts.index');
 
 Route::get('/posts/{id}', function ($id) use ($posts) {
 
@@ -43,6 +43,22 @@ Route::get('/fun/responses', function () use($posts) {
    return response($posts, 201)
        ->header('Content-Type', 'application/json')
        ->cookie('MY_COOKIE', 'Pk Hirpara', 3600);
+});
+
+Route::get('/fun/redirect', function () {
+    return redirect('/contact');
+});
+
+Route::get('/fun/back', function () {
+    return back();
+});
+
+Route::get('/fun/named-route', function () {
+    return redirect()->route('posts.index');
+});
+
+Route::get('/fun/away', function () {
+    return redirect()->away('https://google.com');
 });
 
 Auth::routes();
