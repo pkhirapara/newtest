@@ -71,13 +71,13 @@ Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
         return redirect()->away('https://google.com');
     })->name('away');
 
-    Route::get('/fun/json', function () use ($posts) {
+    Route::get('json', function () use ($posts) {
         return response()->json($posts);
-    });
+    })->name('json');
 
-    Route::get('/fun/download', function () {
+    Route::get('download', function () {
         return response()->download(public_path('landscape.pdf'), 'pk.pdf');
-    });
+    })->name('download');
 
 });
 
