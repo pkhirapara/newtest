@@ -35,6 +35,15 @@ $posts = [
 ];
 
 Route::get('/posts', function () use ($posts) {
+
+//    dd(request()->all());
+
+//    will look in all type of input
+//    dd((int)request()->input('page', 1));
+
+//    will look in all type of query
+    dd((int)request()->query('page', 1));
+
     return view('posts.index', ['posts' => $posts]);
 })->name('posts.index');
 
