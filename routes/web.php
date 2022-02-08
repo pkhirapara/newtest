@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/customers/create', [CustomerController::class, 'create']);
+Route::post('/customers', [CustomerController::class, 'store']);
+
 Route::get('/', [UserController::class, 'index']);
 
 Route::view('/index', 'home.index')->name('home.index');
@@ -61,11 +69,12 @@ Route::get('/fun/away', function () {
     return redirect()->away('https://google.com');
 });
 
-Auth::routes();
+Route::get('/fun/json', function () use ($posts) {
+    return response()->json($posts);
+});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/fun/download', function () {
+    return response()->download(public_path('landscape.pdf'), 'pk.pdf');
+});
 
-Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/customers/create', [CustomerController::class, 'create']);
-Route::post('/customers', [CustomerController::class, 'store']);
 
