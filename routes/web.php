@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,8 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+
+Route::get('/singleActionController', AboutController::class);
 
 $posts = [
     1 => [
