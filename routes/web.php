@@ -8,17 +8,17 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/customers/create', [CustomerController::class, 'create']);
-Route::post('/customers', [CustomerController::class, 'store']);
+//Route::get('/customers', [CustomerController::class, 'index']);
+//Route::get('/customers/create', [CustomerController::class, 'create']);
+//Route::post('/customers', [CustomerController::class, 'store']);
 
-Route::get('/', [UserController::class, 'index']);
+//Route::get('/', [UserController::class, 'index']);
 
-Route::view('/index', 'home.index')->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::view('/contact', 'home.contact')->name('home.contact');
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
 $posts = [
     1 => [
