@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -23,21 +24,11 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact')
 
 Route::get('/singleActionController', AboutController::class);
 
-$posts = [
-    1 => [
-        'title'        => 'Intro to Laravel',
-        'content'      => 'This is a short intro to Laravel',
-        'is_new'       => true,
-        'has_comments' => true,
-    ],
-    2 => [
-        'title'   => 'Intro to PHP',
-        'content' => 'This is a short intro to PHP',
-        'is_new'  => false,
-    ]
-];
 
-Route::get('/posts', function () use ($posts) {
+
+Route::resource('posts', PostsController::class);
+
+/*Route::get('/posts', function () use ($posts) {
 
 //    dd(request()->all());
 
@@ -57,9 +48,9 @@ Route::get('/posts/{id}', function ($id) use ($posts) {
     return view('posts.show', ['post' => $posts[$id]]);
 })
 //    ->where(['id' => '[0-9]+'])
-    ->name('posts.show');
+    ->name('posts.show');*/
 
-Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
+/*Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
 
     Route::get('responses', function () use($posts) {
         return response($posts, 201)
@@ -91,7 +82,7 @@ Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
         return response()->download(public_path('landscape.pdf'), 'pk.pdf');
     })->name('download');
 
-});
+});*/
 
 
 
