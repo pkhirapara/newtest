@@ -29,24 +29,29 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        //
+        $post          = new BlogPost();
+        $post->title   = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
+
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View|Response
      */
     public function show($id)
@@ -59,7 +64,7 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -70,8 +75,8 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -82,7 +87,7 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
