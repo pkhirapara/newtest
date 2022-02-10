@@ -40,8 +40,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title'   => 'required|min:5|max:100',
+            'content' => 'required|min:5'
+        ]);
+
         $post          = new BlogPost();
         $post->title   = $request->input('title');
+
         $post->content = $request->input('content');
         $post->save();
 
