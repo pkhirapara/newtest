@@ -26,7 +26,7 @@ Route::get('/singleActionController', AboutController::class);
 
 
 
-Route::resource('posts', PostsController::class);
+ Route::resource('posts', PostsController::class);
 
 /*Route::get('/posts', function () use ($posts) {
 
