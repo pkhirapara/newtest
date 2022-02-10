@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -11,19 +12,6 @@ use Illuminate\Http\Response;
 class PostsController extends Controller
 {
 
-    private $posts = [
-        1 => [
-            'title'        => 'Intro to Laravel',
-            'content'      => 'This is a short intro to Laravel',
-            'is_new'       => true,
-            'has_comments' => true,
-        ],
-        2 => [
-            'title'   => 'Intro to PHP',
-            'content' => 'This is a short intro to PHP',
-            'is_new'  => false,
-        ]
-    ];
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => $this->posts]);
+        return view('posts.index', ['posts' => BlogPost::all()]);
     }
 
     /**
@@ -63,9 +51,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        abort_if(!isset($this->posts[$id]), 404);
+//        abort_if(!isset($this->posts[$id]), 404);
 
-        return view('posts.show', ['post' => $this->posts[$id]]);
+        return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
     }
 
     /**

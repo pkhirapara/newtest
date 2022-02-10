@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 
-Auth::routes();
+//Auth::routes();
 
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
 
