@@ -76,6 +76,11 @@
         </nav>--}}
 
         <main class="py-4">
+            @if(session('status'))
+                <div style="background: greenyellow; color: white">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
