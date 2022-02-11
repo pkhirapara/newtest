@@ -2,14 +2,23 @@
 
 namespace Tests\Feature;
 
+use App\Events\NewEntryRecievedEvent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class ContestRegistrationTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setup(): void {
+        parent::setUp();
+
+        Event::fake();
+    }
+
     /**
      * @test
      */
@@ -23,7 +32,9 @@ class ContestRegistrationTest extends TestCase
     }
 
     /**
+     * A basic test example.
      * @test
+     * @return void
      */
     public function email_is_required()
     {
@@ -37,15 +48,31 @@ class ContestRegistrationTest extends TestCase
     }
 
     /**
+     * A basic test example.
      * @test
+     * @return void
      */
     public function email_needs_to_be_an_email()
     {
-
         $this->post('/contest', [
             'email' => 'sgrfgbv',
         ]);
 
         $this->assertDatabaseCount('contest_entries', 0);
+    }
+
+    /**
+     * A basic test example.
+     * @test
+     * @return void
+     */
+    public function an_event_is_fired_when_user_registers()
+    {
+        $this->post('/contest', [
+            'email' => 'abc@abc.com',
+        ]);
+
+        Event::assertDispatched(NewEntryRecievedEvent::class);
+
     }
 }

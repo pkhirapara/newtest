@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewEntryRecievedEvent;
 use App\Models\ContestEntry;
 use Illuminate\Http\Request;
 
@@ -14,5 +15,8 @@ class ContestEntryController extends Controller
         ]);
 
         ContestEntry::create($data);
+
+//        event(NewEntryRecievedEvent::class);
+        NewEntryRecievedEvent::dispatch();
     }
 }
