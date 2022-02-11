@@ -19,7 +19,7 @@ use App\Http\Controllers\HomeController;
 
 //Route::get('/', [UserController::class, 'index']);
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+//Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
@@ -28,7 +28,7 @@ Route::get('/singleActionController', AboutController::class);
 
 Route::resource('posts', PostsController::class);
 
-Route::post('/contest', [ContestEntryController::class, 'store']);
+Route::post('/contest', [ContestEntryController::class, 'store'])->name('contest.store');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

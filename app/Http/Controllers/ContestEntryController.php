@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class ContestEntryController extends Controller
 {
+
     public function store(Request $request) {
         $data = $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
         ]);
 
         ContestEntry::create($data);
