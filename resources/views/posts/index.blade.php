@@ -6,15 +6,12 @@
 
     @if(count($posts))
 
-    @foreach($posts as $key => $post)
-        <div>{{ $key }}. {{ $post['title'] }}</div>
-    @endforeach
+        @foreach($posts as $key => $post)
+            @include('posts.partials.post')
+        @endforeach
 
     @else
-    No posts found!
+        No posts found!
     @endif
-
-
-
 
 @endsection

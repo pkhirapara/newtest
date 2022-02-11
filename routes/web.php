@@ -26,7 +26,7 @@ Route::get('/singleActionController', AboutController::class);
 
 
 
- Route::resource('posts', PostsController::class)->only('index', 'show', 'create', 'store', 'edit', 'update');
+ Route::resource('posts', PostsController::class);
 
 /*Route::get('/posts', function () use ($posts) {
 
