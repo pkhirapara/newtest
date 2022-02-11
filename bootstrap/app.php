@@ -41,7 +41,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-class_alias('Elibyy\TCPDF\Facades\TCPDF', 'PDF');
+//class_alias('Elibyy\TCPDF\Facades\TCPDF', 'PDF');
 
 /*
 |--------------------------------------------------------------------------

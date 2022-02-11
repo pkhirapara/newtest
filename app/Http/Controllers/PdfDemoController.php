@@ -1,10 +1,10 @@
 <?php
-
+/*
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use PDF;
+//use PDF;
 
 class PdfDemoController extends Controller
 {
@@ -22,4 +22,4 @@ class PdfDemoController extends Controller
 
         PDF::Output('SamplePDF.pdf');
     }
-}
+}*/
