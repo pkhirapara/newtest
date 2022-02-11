@@ -3,10 +3,12 @@
 namespace Tests\Feature;
 
 use App\Events\NewEntryRecievedEvent;
+use App\Mail\WelcomeContestEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class ContestRegistrationTest extends TestCase
@@ -16,7 +18,7 @@ class ContestRegistrationTest extends TestCase
     protected function setup(): void {
         parent::setUp();
 
-        Event::fake();
+        Mail::fake();
     }
 
     /**
@@ -68,11 +70,27 @@ class ContestRegistrationTest extends TestCase
      */
     public function an_event_is_fired_when_user_registers()
     {
+        Event::fake([
+            NewEntryRecievedEvent::class,
+        ]);
         $this->post('/contest', [
             'email' => 'abc@abc.com',
         ]);
 
         Event::assertDispatched(NewEntryRecievedEvent::class);
+    }
 
+    /**
+     * A basic test example.
+     * @test
+     * @return void
+     */
+    public function a_welcome_email_is_sent()
+    {
+        $this->post('/contest', [
+            'email' => 'abc@abc.com',
+        ]);
+
+        Mail::assertQueued(WelcomeContestEmail::class);
     }
 }
