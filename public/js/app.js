@@ -30979,16 +30979,26 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./resources/css/app.css":
+/*!*******************************!*\
+  !*** ./resources/css/app.css ***!
+  \*******************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nError: Failed to find '~bootstrap'\n  in [\n    C:\\Code\\newtest\\resources\\css\n  ]\n    at C:\\Code\\newtest\\node_modules\\postcss-import\\lib\\resolve-id.js:35:13\n    at async LazyResult.runAsync (C:\\Code\\newtest\\node_modules\\postcss\\lib\\lazy-result.js:396:11)\n    at async Object.loader (C:\\Code\\newtest\\node_modules\\postcss-loader\\dist\\index.js:97:14)\n    at processResult (C:\\Code\\newtest\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Code\\newtest\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Code\\newtest\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Code\\newtest\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Code\\newtest\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Code\\newtest\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
 
 /***/ }),
 
@@ -31371,6 +31381,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
