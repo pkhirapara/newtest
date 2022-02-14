@@ -11,7 +11,7 @@ use App\Http\Controllers\HomeController;
 
 //Auth::routes();
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 //Route::get('/customers', [CustomerController::class, 'index']);
 //Route::get('/customers/create', [CustomerController::class, 'create']);

@@ -17,20 +17,22 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md bg-white border-bottom shadow-sm mb-3 bg-gray-800 text-white">
+        <h5 class="my-0 mr-md-auto font-weight-normal ">Laravel App</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="{{ route('home.index') }}">Home</a>
+            <a class="p-2 text-dark" href="{{ route('home.contact') }}">Contact</a>
+            <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Posts</a>
+            <a class="p-2 text-dark" href="{{ route('posts.create') }}">Add Blog Post</a>
+        </nav>
+    </div>
+        <div class="container">
+            @if(session('status'))
+                <div style="background:red; color: white">
+                    {{ session('status') }}
                 </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            @endif
+            @yield('content')
         </div>
     </body>
 </html>
