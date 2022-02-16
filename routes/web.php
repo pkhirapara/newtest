@@ -5,13 +5,12 @@ use App\Http\Controllers\ContestEntryController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 
 //Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 //Route::get('/customers', [CustomerController::class, 'index']);
 //Route::get('/customers/create', [CustomerController::class, 'create']);
@@ -40,12 +39,12 @@ Route::post('/contest', [ContestEntryController::class, 'store'])->name('contest
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 require __DIR__ . '/auth.php';
