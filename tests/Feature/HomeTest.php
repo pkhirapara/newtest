@@ -8,11 +8,6 @@ use Tests\TestCase;
 
 class HomeTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     * @test
-     * @return void
-     */
     public function test_home_page_is_working_correctly()
     {
         //Arrange
